@@ -1,0 +1,34 @@
+const int VRxPin = A0;
+const int VRyPin = A1;
+const int SWPin = 2; // 디지털 핀 정의
+
+void setup() {
+
+  Serial.begin(9600);
+
+  pinMode(SWPin, INPUT);
+}
+
+void loop() {
+
+  int xValue = analogRead(VRxPin);
+  int yValue = analogRead(VRyPin);
+
+  int swState = digitalRead(SWPin);
+
+
+  Serial.print("X: ");
+  Serial.print(xValue);
+  Serial.print(" | Y: ");
+  Serial.print(yValue);
+  Serial.print(" | Button: ");
+  Serial.println(swState);
+
+
+  if (swState == LOW) {
+    Serial.println("1");
+  }
+
+
+  delay(100);
+}
